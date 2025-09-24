@@ -1,0 +1,59 @@
+{
+  "name": "solana-memecoin-monitor",
+  "version": "1.0.0",
+  "description": "Production-ready Solana memecoin monitoring tool with volume/liquidity threshold alerts",
+  "main": "src/monitor.js",
+  "scripts": {
+    "start": "node src/monitor.js",
+    "test": "jest",
+    "test-mock": "node tests/mock-runner.js",
+    "dev": "nodemon src/monitor.js",
+    "lint": "eslint src/ tests/",
+    "format": "prettier --write src/ tests/ *.js *.json *.md"
+  },
+  "keywords": [
+    "solana",
+    "memecoin",
+    "cryptocurrency",
+    "monitoring",
+    "telegram",
+    "defi",
+    "liquidity",
+    "volume"
+  ],
+  "author": "Memecoin Monitor",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.87.6",
+    "@solana/spl-token": "^0.3.11",
+    "axios": "^1.6.0",
+    "node-telegram-bot-api": "^0.64.0",
+    "ws": "^8.14.2",
+    "winston": "^3.11.0",
+    "dotenv": "^16.3.1",
+    "big.js": "^6.2.1",
+    "lodash": "^4.17.21",
+    "retry": "^0.13.1",
+    "p-limit": "^4.0.0",
+    "ioredis": "^5.3.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1",
+    "supertest": "^6.3.3",
+    "@types/jest": "^29.5.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/solana-memecoin-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/solana-memecoin-monitor/issues"
+  },
+  "homepage": "https://github.com/your-username/solana-memecoin-monitor#readme"
+}

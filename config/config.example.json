@@ -1,0 +1,80 @@
+{
+  "monitoring": {
+    "VOLUME_THRESHOLD_USD": 50000,
+    "LIQUIDITY_THRESHOLD_USD": 2000,
+    "ALERT_COOLDOWN_SECONDS": 3600,
+    "MONITOR_MODE": "since_first_trade",
+    "MAX_TOKENS_TRACKED": 10000,
+    "PRICE_UPDATE_INTERVAL_MS": 30000
+  },
+  "solana": {
+    "RPC_HTTP_ENDPOINT": "https://api.mainnet-beta.solana.com",
+    "RPC_WS_ENDPOINT": "wss://api.mainnet-beta.solana.com",
+    "COMMITMENT": "confirmed",
+    "RATE_LIMIT_RPS": 10,
+    "RECONNECT_INTERVAL_MS": 5000,
+    "MAX_RECONNECT_ATTEMPTS": 10
+  },
+  "telegram": {
+    "BOT_TOKEN": "your_bot_token_here",
+    "CHAT_ID": "your_chat_id_here",
+    "ENABLE_ALERTS": true,
+    "MAX_MESSAGE_LENGTH": 4096,
+    "RETRY_ATTEMPTS": 3,
+    "RETRY_DELAY_MS": 1000
+  },
+  "external_apis": {
+    "pumpfun": {
+      "API_KEY": "optional_pump_portal_key",
+      "BASE_URL": "https://pumpportal.fun/api",
+      "RATE_LIMIT_RPS": 5,
+      "TIMEOUT_MS": 10000
+    },
+    "gmgn": {
+      "API_KEY": "optional_gmgn_key", 
+      "BASE_URL": "https://gmgn.ai/defi/quotation/v1",
+      "RATE_LIMIT_RPS": 3,
+      "TIMEOUT_MS": 10000
+    },
+    "coingecko": {
+      "BASE_URL": "https://api.coingecko.com/api/v3",
+      "RATE_LIMIT_RPS": 2,
+      "TIMEOUT_MS": 10000,
+      "FREE_TIER": true
+    },
+    "jupiter": {
+      "BASE_URL": "https://price.jup.ag/v4",
+      "RATE_LIMIT_RPS": 10,
+      "TIMEOUT_MS": 5000
+    }
+  },
+  "risk_assessment": {
+    "HONEYPOT_CHECKS": true,
+    "MINTABLE_CHECKS": true,
+    "LP_BURN_CHECKS": true,
+    "OWNER_RENOUNCE_CHECKS": true,
+    "TRANSFER_HOOK_CHECKS": true,
+    "MIN_HOLDER_COUNT": 10,
+    "MAX_HOLDER_CONCENTRATION": 0.5
+  },
+  "database": {
+    "REDIS_URL": "redis://localhost:6379",
+    "TOKEN_TTL_HOURS": 168,
+    "VOLUME_TTL_HOURS": 72,
+    "ALERT_TTL_HOURS": 24
+  },
+  "logging": {
+    "LEVEL": "info",
+    "FILE_PATH": "logs/monitor.log",
+    "MAX_FILE_SIZE": "10m",
+    "MAX_FILES": 5,
+    "CONSOLE_OUTPUT": true,
+    "TIMESTAMP_FORMAT": "YYYY-MM-DD HH:mm:ss"
+  },
+  "testing": {
+    "MOCK_MODE": false,
+    "MOCK_DATA_PATH": "tests/fixtures",
+    "SIMULATION_SPEED": 1,
+    "DRY_RUN": false
+  }
+}
