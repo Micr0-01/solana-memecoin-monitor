@@ -1,0 +1,77 @@
+[Unit]
+Description=Solana Memecoin Monitor
+Documentation=https://github.com/your-repo/solana-memecoin-monitor
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=solana-monitor
+Group=solana-monitor
+WorkingDirectory=/home/solana-monitor/solana-memecoin-monitor
+
+# Environment
+Environment=NODE_ENV=production
+EnvironmentFile=/home/solana-monitor/solana-memecoin-monitor/.env
+
+# Main process
+ExecStart=/usr/bin/node src/monitor.js
+ExecReload=/bin/kill -SIGUSR2 $MAINPID
+
+# Process management
+Restart=always
+RestartSec=10
+StartLimitBurst=3
+StartLimitInterval=60
+
+# Performance & Security
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=no
+ReadWritePaths=/home/solana-monitor/solana-memecoin-monitor
+ReadWritePaths=/var/log/solana-monitor
+ReadWritePaths=/tmp
+
+# Capabilities
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+# Network
+IPAddressDeny=10.0.0.0/8
+IPAddressDeny=172.16.0.0/12
+IPAddressDeny=192.168.0.0/16
+IPAddressAllow=localhost
+IPAddressAllow=any
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+MemoryMax=1G
+TasksMax=1024
+
+# Logging
+StandardOutput=append:/var/log/solana-monitor/systemd.log
+StandardError=append:/var/log/solana-monitor/systemd-error.log
+SyslogIdentifier=solana-monitor
+
+# Hardening
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectProc=invisible
+ProcSubset=pid
+PrivateDevices=yes
+PrivateUsers=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+RestrictNamespaces=yes
+
+[Install]
+WantedBy=multi-user.target
